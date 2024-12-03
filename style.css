@@ -1,0 +1,11 @@
+
+.visible{
+    display: block;
+}
+.invisible{
+    display: none;
+}
+
+body {
+    margin: 0;
+}
