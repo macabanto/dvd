@@ -1,1 +1,29 @@
 welcome to my notes!
+
+GIT ( by scott chacon ) 
+ - Version Control System ( VCS )
+ - - System records changes to a [ file / set of files ] over time
+ - - so previous versions can be recalled
+ - - can see who last made changes to a file
+
+ - Three main States
+ - - Modified ( working directory )
+ - - - file has been changed
+ - - - not yet committed
+ - - Staged ( add )
+ - - - modified file has been marked
+ - - - goes toward commit
+ - - Commited ( .git directory / repo )
+ - - - data is safely stored in local database
+
+GIT HUB
+ - Distributed Version Control System
+ - - version control system
+
+GIT COMMANDS
+ - git init 
+ - - initiates repository in current directory
+ - git clone _distributed_repository_url
+ - - copies distributed repository to local directory 
+ - git clone _distributed_repository_url _local_repository_specified_name_directory
+ - - copies distributed repository to local direcotry with specified name
