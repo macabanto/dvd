@@ -31,10 +31,20 @@ GIT COMMANDS
  - - includes file to current commit
  - - 'stages' file
  - git commit
- - - takes snapshot of current working directory
- - - includes only files marked by 'add' command
+ - - takes snapshot of currently staged directory
+ - - includes only changed that had been marked as staged
  - - these files are now part of the repository
  - git push ( github )
  - - if repositroy has distributed version;
  - - sends local repository to sever to be updated ( shared repo )
+ - git rm 
+ - - removes file from repository
+ - - - history of file remains
+ - git mv
+ - - moving files in git directory
+ - - not explicitly tracked ?
+ - - also used for renaming files
+ - git log
+ - - see progress of repository
+ - - 
 
