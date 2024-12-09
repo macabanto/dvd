@@ -76,7 +76,9 @@ function is_collided_boundary(){//determines if dvd logo has met boundary, retur
         logo_boundary['bottom'] >= window_size_y ||
         logo_boundary['right'] >= window_size_x ||
         logo_boundary['left'] <= 0
-    )return true;
+    ){
+        console.log('boop');
+        return true; 
     else return false;
 }
 
