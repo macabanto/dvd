@@ -79,6 +79,7 @@ function is_collided_boundary(){//determines if dvd logo has met boundary, retur
     ){
         console.log('boop');
         return true; 
+    }
     else return false;
 }
 
@@ -88,9 +89,6 @@ function rotate_dvd_div(){//calculates rotation tranform, returns transform as s
         // Change 
         rotation_direction_z *= -1;
     } 
-    console.log(dvd_div.offsetHeight);//as div rotates, height should change no?
-    console.log(dvd_div.getBoundingClientRect()['top']);//as div rotates, height should change no?
-
     return `rotateZ(${rotation_z}deg)`;
 }
 
