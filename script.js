@@ -35,6 +35,8 @@ var position_delta_x = Math.random() * 3 + 2; // Values range from 3-5
 var position_delta_y = Math.random() * 3 + 2; // Values range from 3-5
 // rotation
 var rotation_delta_z = 2.5; //rotates about Z axis ( spinning )
+var score=document.getElementById('score');
+var bounces=document.getElementById('bounces');
     //potential issue occurs during collision. . .
     //  logo collides with wall at or near 90 degrees or some multiple of that, 
     //      change in rotation causes logo to collide on the very next frame causing a "double collision"
@@ -43,16 +45,22 @@ var rotation_delta_z = 2.5; //rotates about Z axis ( spinning )
 
 window.onload = () => {
     document.getElementById("start_button").addEventListener("click", start_game);
+    window.addEventListener('keydown', function(event){
+        if(event.key === " "){
+            start_game();
+        }
+    })
 };
 
 // GAME
+var boundary = 0;
 
 function start_game() {//applies correct css  making start menu invisible, game visible
     
     window_size_x = window.innerWidth;//setting window size 
     window_size_y = window.innerHeight; //setting window size 
 
-    setInterval(transform_svg, 17); // Applies transform every 10ms
+    setInterval(transform_svg, 16.666666666); // Applies transform every 50ms ( 60fps )
 
     position_x = 100; // Initial x position
     position_y = 100; // Initial y position
@@ -70,39 +78,63 @@ function change_color() {//cycle colours
 
 function transform_svg() {//calculates and applies transform to div
     // Update the position
-
-    position_x += ( position_delta_x * position_direction_x );
-    position_y += ( position_delta_y * position_direction_y );
-    rotation_z += ( rotation_delta_z * rotation_direction_z );
-
-    let logo_boundary = dvd_svg.getBoundingClientRect();
+    let logo_boundary = dvd_svg.getBoundingClientRect();//getting svg location
     // boundary booleans
     var top_boundary = logo_boundary['top'] <= 0;
     var bottom_boundary = logo_boundary['bottom'] >= window_size_y;
     var right_boundary = logo_boundary['right'] >= window_size_x;
     var left_boundary = logo_boundary['left'] <= 0;
-    
+    boundary = 0;
         if (top_boundary) { // Top boundary reached, go down
             rotation_direction_z *= -1;
             change_color();
             position_direction_y = 1;
+            let bounce_value = parseInt(bounces.innerText);
+            bounces.innerText = ( bounce_value + 1 );
+            boundary = 1;
         }
         if (bottom_boundary) { // Bottom boundary reached, go up
             rotation_direction_z *= -1;
             change_color();
             position_direction_y = -1;
+            let bounce_value = parseInt(bounces.innerText);
+            bounces.innerText = ( bounce_value + 1 );
+            boundary = 1;
         }
         if (left_boundary) { // Left boundary reached, go right
             rotation_direction_z *= -1;
             change_color();
             position_direction_x = 1;
+            let bounce_value = parseInt(bounces.innerText);
+            bounces.innerText = ( bounce_value + 1 );
+            boundary = 1;
         }
         if (right_boundary) { // Right boundary reached, go left
             rotation_direction_z *= -1;
             change_color();
             position_direction_x = -1;
+            let bounce_value = parseInt(bounces.innerText);
+            bounces.innerText = ( bounce_value + 1 );
+            boundary = 1;
         }
+
+        position_x += ( position_delta_x * position_direction_x );
+        position_y += ( position_delta_y * position_direction_y );
+        rotation_z += ( rotation_delta_z * rotation_direction_z );
     
     // Apply the CSS transform
     dvd_svg.style.transform = `translate(${position_x}px, ${position_y}px) rotateZ(${rotation_z}deg)`;
 }
+
+//SCORING
+
+window.addEventListener('keydown', function(event){
+    if(event.key === " "){
+    
+        if (boundary) {
+            console.log("score!");
+            let score_value = parseInt(score.innerText);
+            score.innerText = ( score_value + 1 );
+        }
+    }
+})
