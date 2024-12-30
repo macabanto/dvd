@@ -1,13 +1,37 @@
-
-.visible{
-    display: block;
-
+.visible_div {
+	display: block;
 }
 
-.invisible{
-    display: none;
+.invisible_div {
+	display: none;
 }
 
 body {
+	margin: 0;
+	font-size: xx-large;
+	background: #000001;
+	width: 100%;
+	height: 100%;
+}
+
+#start-menu_div {
+	border: 1px solid black;
+	padding: 0;
+	margin: auto;
+	
+}
+
+.game-text {
+	color: white;
+	text-align: center;
+	line-height: 180%;
+}
+
+.centered_div {
     margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }

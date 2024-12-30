@@ -1,0 +1,32 @@
+- [ ] user loads site =>
+- [ ] player presented with start screen
+    - [ ] black backdrop, white text
+    - [ ] instructions are presented
+    - [ ] DVD logo in center
+        - [ ] DVD logo is clickable; starts game
+- [ ] user presses start =>
+- [ ] start game screen appears;
+    - [ ] instructions disappear
+    - [ ] after 1* second dvd logo appears ( *interval decreases as game continues )
+    - [ ] continues until screen is full of dvd logos
+        - [ ] user can click on dvd logo to make it disappear
+        - [ ] upon clicking dvd logo, 
+            - [ ] user score goes up
+            - [ ] dvd logo disappears
+
+
+index.html
+-<html>
+--<head>
+--<body>
+---<div id="start-menu_div"> 
+----<p id="instructions"> 
+---<div id="play_div">
+----<p id="score">
+
+style.css
+-visible_div
+-invisible_div
+-centered_div
+
+script.js
